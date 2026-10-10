@@ -1,0 +1,15 @@
+.gradle/
+build/
+run/
+out/
+*.class
+
+# Local dependency supplied by the developer; do not commit third-party binaries.
+libs/*.jar
+
+# IDE and OS files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
