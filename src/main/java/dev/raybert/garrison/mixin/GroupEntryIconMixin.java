@@ -20,8 +20,8 @@ public abstract class GroupEntryIconMixin {
         Minecraft minecraft = Minecraft.getInstance();
         int x = textX + minecraft.font.width(group.getName()) + 2;
         graphics.drawString(minecraft.font, "[", x, textY, 0xFFFFFF, false);
-        int shieldX = x + minecraft.font.width("[") + 1;
-        GarrisonIcon.drawShield(graphics, shieldX, textY, 9, color);
-        graphics.drawString(minecraft.font, "]", shieldX + 10, textY, 0xFFFFFF, false);
+        int markerX = x + minecraft.font.width("[");
+        graphics.drawString(minecraft.font, "X", markerX, textY, color, false);
+        graphics.drawString(minecraft.font, "]", markerX + minecraft.font.width("X"), textY, 0xFFFFFF, false);
     }
 }

@@ -2,10 +2,12 @@
 
 - Renames the mod to **Recruits: Garrison** while retaining the `garrison` mod ID
   and existing world data.
-- Keeps each Recruits group's chosen icon. Garrison groups now show a native shield
-  marker in square brackets beside the group name in command and group-list views.
+- Keeps each Recruits group's chosen icon. Garrison groups now show a colorable `[X]`
+  beside the group name in command and group-list views.
 - Adds a group-specific **Set Group Color** palette using Recruits' 25 faction unit
-  colors. The selected shield color is saved per garrison and synchronized to clients.
+  colors. The selected X color is saved per garrison and synchronized to clients.
+- Replaces **Battle Stations** and **Fill Vacancies** with one centered **Fill Positions**
+  control that assigns available compatible recruits only to empty positions.
 - Adds group-specific **Remove all positions**, which releases assigned defenders and
   clears that group's posts and assignments without removing its garrison designation.
 - Network protocol changes from 2 to 3. Install 0.2.0 on both client and server.

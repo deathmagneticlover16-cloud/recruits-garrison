@@ -26,9 +26,9 @@ public abstract class GroupButtonIconMixin {
         graphics.pose().scale(scale, scale, 1.0F);
         int x = minecraft.font.width(group.getName()) + 2;
         graphics.drawString(minecraft.font, "[", x, 0, 0xFFFFFF, false);
-        int shieldX = x + minecraft.font.width("[") + 1;
-        GarrisonIcon.drawShield(graphics, shieldX, 0, 9, color);
-        graphics.drawString(minecraft.font, "]", shieldX + 10, 0, 0xFFFFFF, false);
+        int markerX = x + minecraft.font.width("[");
+        graphics.drawString(minecraft.font, "X", markerX, 0, color, false);
+        graphics.drawString(minecraft.font, "]", markerX + minecraft.font.width("X"), 0, 0xFFFFFF, false);
         graphics.pose().popPose();
     }
 }

@@ -86,7 +86,7 @@ public final class GarrisonController {
             r.isInFormation = false; r.holdFormation = true;
             r.ownerRot = p.facing; r.rotateTicks = 40;
             CommandEvents.checkPatrolLeaderState(r);
-            // Battle Stations itself issues the move. Do not wait for another order
+            // The garrison command itself issues the move. Do not wait for another order
             // or rely solely on a hold goal becoming eligible on a later tick.
             p.nextPathTick = 0;
             PostMovement.startPath(r, p);

@@ -5,7 +5,7 @@ The supplied Workers 2.0.3 source registers `WorkerCommandScreen` through
 `RecruitsCommandButton` widgets via the public `CommandScreen.addRenderableWidget`.
 GarrisonCategory follows that pattern. No screen replacement, private-screen
 reflection, overlay coordinate interception, or GUI replacement is used. V0.2.0 adds
-client-only render-tail hooks for the bracketed, tinted shield name marker. These hooks
+client-only render-tail hooks for the bracketed, tinted X name marker. These hooks
 do not modify the native group's saved name or icon.
 
 Recruits passes `getGroups()` to categories, not `getActiveGroups()`. The category
@@ -60,8 +60,8 @@ The standalone injection scan verifies names/descriptors, not live Mixin applica
 - Assigned UUID, active execution and visible occupation state are separate.
   Hold Posts OFF deactivates execution and restores the previous holdFormation flag,
   while saved assignment and post geometry remain intact.
-- Battle Stations explicitly enables Hold Posts; Fill Vacancies does not change
-  the group's Hold Posts setting or recall already assigned released troops.
+- Fill Positions assigns available compatible recruits only to vacant posts. It does
+  not change Hold Posts or recall already assigned released troops.
 - Client state clears on disconnect. Markers are limited to selected groups and
   the current dimension, and require the local Show toggle.
 

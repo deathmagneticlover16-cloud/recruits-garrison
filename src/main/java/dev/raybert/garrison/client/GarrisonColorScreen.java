@@ -12,7 +12,6 @@ import java.util.UUID;
 public final class GarrisonColorScreen extends Screen {
     private static final int COLUMNS = 5;
     private static final int CELL = 24;
-    private static final int SWATCH = 18;
     private final Screen parent;
     private final UUID group;
     private final String groupName;
@@ -45,7 +44,7 @@ public final class GarrisonColorScreen extends Screen {
             int border = i == selected ? 0xFFFFFFFF : isOver(mouseX, mouseY, x, y) ? 0xFFAAAAAA : 0xFF444444;
             graphics.fill(x, y, x + CELL - 2, y + CELL - 2, border);
             graphics.fill(x + 2, y + 2, x + CELL - 4, y + CELL - 4, 0xFF202020);
-            GarrisonIcon.drawShield(graphics, x + 3, y + 3, SWATCH, GarrisonPalette.RGB[i]);
+            graphics.drawCenteredString(font, "X", x + (CELL - 2) / 2, y + 7, GarrisonPalette.RGB[i]);
         }
         int hovered = indexAt(mouseX, mouseY);
         int label = hovered >= 0 ? hovered : selected;

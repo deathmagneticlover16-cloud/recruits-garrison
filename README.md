@@ -25,27 +25,24 @@ Gradle project and that dependency before release.
 
 1. Create a normal group using Recruits. Select only that group in the command screen.
 2. Open the castle-icon **Garrison** category and click **Make Garrison**.
-   The group's original icon stays in place and a shield marker appears beside its name.
-   Use **Set Group Color** to choose that shield's color from the Recruits faction palette.
+   The group's original icon stays in place and a colored `[X]` appears beside its name.
+   Use **Set Group Color** in the bottom-left corner to choose the X color.
 3. Cycle **Type**, click **Add Position**, face the desired direction, and right-click
    a solid floor block in the world. Escape cancels placement. Repeat for each post.
-4. Click **Battle Stations**. This restores saved assignments, fills vacancies,
-   and enables Hold Posts. Unassigned members remain reserves.
+4. Click **Fill Positions** to assign available compatible recruits to empty posts.
+   Existing assignments are not reshuffled and unassigned members remain reserves.
 5. Native movement and formations affect reserves while Hold Posts is ON.
    Native fire controls, shields, stances and target selection still reach defenders.
-6. **Fill Vacancies** assigns only unassigned recruits to empty posts. It does not
-   reshuffle existing assignments, including released assignments.
-7. **Auto Fill** replaces dead/invalid defenders while deployed with Hold Posts ON.
+6. **Auto Fill** replaces dead/invalid defenders while deployed with Hold Posts ON.
    It pauses while Hold Posts is OFF so it cannot pull the released army back.
-8. **Hold Posts OFF** releases defenders without deleting posts or assignments.
-   **Battle Stations** recalls them. Turning Hold Posts back ON also recalls saved
-   assigned defenders, but does not itself fill vacancies.
-9. **Show** displays nearby selected garrisons' post type, state and facing.
+7. **Hold Posts OFF** releases defenders without deleting posts or assignments.
+   Turning Hold Posts back ON recalls saved assigned defenders but does not fill vacancies.
+8. **Show** displays nearby selected garrisons' post type, state and facing.
    **Remove Position** then right-clicking beneath a post removes that post.
-10. **Remove all positions** releases the selected group's defenders and clears all
+9. **Remove all positions** releases the selected group's defenders and clears all
     its saved posts while keeping the group designated as a garrison.
 
-Explicit Fill Vacancies also works before initial deployment or while Hold Posts
+**Fill Positions** also works before initial deployment or while Hold Posts
 is OFF. Only newly assigned reserves receive post orders; released assigned troops
 are not recalled. When Hold Posts is OFF those new troops still accept native moves.
 
