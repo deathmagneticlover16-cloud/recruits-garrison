@@ -4,7 +4,9 @@ The supplied Workers 2.0.3 source registers `WorkerCommandScreen` through
 `CommandCategoryManager.register` during client setup. Its category creates
 `RecruitsCommandButton` widgets via the public `CommandScreen.addRenderableWidget`.
 GarrisonCategory follows that pattern. No screen replacement, private-screen
-reflection, overlay coordinate interception, or GUI replacement is used. V0.1.1 adds client-only icon-field/render hooks.
+reflection, overlay coordinate interception, or GUI replacement is used. V0.2.0 adds
+client-only render-tail hooks for the bracketed, tinted shield name marker. These hooks
+do not modify the native group's saved name or icon.
 
 Recruits passes `getGroups()` to categories, not `getActiveGroups()`. The category
 therefore explicitly filters `!isDisabled()` and `!removed`. Conversion is a separate

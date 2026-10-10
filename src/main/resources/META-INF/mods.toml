@@ -3,8 +3,8 @@ loaderVersion="[47,)"
 license="All Rights Reserved"
 [[mods]]
 modId="garrison"
-version="0.1.1"
-displayName="Recruits Garrison Groups"
+version="0.2.0"
+displayName="Recruits: Garrison"
 logoFile="assets/garrison/textures/gui/castle.png"
 description='''Persistent defensive posts and reserves for native Recruits groups.'''
 [[dependencies.garrison]]

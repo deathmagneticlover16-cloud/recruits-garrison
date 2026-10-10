@@ -1,4 +1,4 @@
-# Recruits Garrison Groups 0.1.1 — experimental V1
+# Recruits: Garrison 0.2.0 — experimental V1
 
 Forge 1.20.1 addon for Villager Recruits 1.15.2. Install the runtime JAR on both
 client and server alongside Recruits. Workers is an architectural reference;
@@ -11,21 +11,22 @@ Source compiled against a cached Recruits 1.15.2 development JAR and Forge
 AutoRenamingTool 2.0.3. Its declared minimum Forge version is 47.4.10, matching
 the supplied Recruits source build.
 
-Eleven assignment-policy checks, nine NBT persistence checks and eight arrival checks passed.
-Development injection target matches were checked against the cached
-Recruits JAR. These checks are NOT an in-game acceptance test or a Mixin
-transformation/launch test. No Minecraft client or dedicated server was launched.
-Treat this as a first test build, not a verified release.
+The dependency-free suites pass eleven assignment-policy checks, eight arrival checks,
+and seven palette checks.
+The persistence suite now covers twelve NBT and group-isolation cases, but
+the current 0.2.0 changes still require a full dependency-backed build and in-game
+acceptance test. No Minecraft client or dedicated server was launched here.
 
-The environment denied Gradle's network download. Java compilation and remapping
-produced their outputs but reported AccessDeniedException during dependency archive
-cleanup. The artifacts and test outputs were inspected afterward. Build normally
-with the included Gradle project on a machine with dependency access before release.
+This environment could not resolve Gradle's distribution host, and the required
+production Recruits JAR is deliberately not bundled. Build normally with the included
+Gradle project and that dependency before release.
 
 ## Using it
 
 1. Create a normal group using Recruits. Select only that group in the command screen.
 2. Open the castle-icon **Garrison** category and click **Make Garrison**.
+   The group's original icon stays in place and a shield marker appears beside its name.
+   Use **Set Group Color** to choose that shield's color from the Recruits faction palette.
 3. Cycle **Type**, click **Add Position**, face the desired direction, and right-click
    a solid floor block in the world. Escape cancels placement. Repeat for each post.
 4. Click **Battle Stations**. This restores saved assignments, fills vacancies,
@@ -41,6 +42,8 @@ with the included Gradle project on a machine with dependency access before rele
    assigned defenders, but does not itself fill vacancies.
 9. **Show** displays nearby selected garrisons' post type, state and facing.
    **Remove Position** then right-clicking beneath a post removes that post.
+10. **Remove all positions** releases the selected group's defenders and clears all
+    its saved posts while keeping the group designated as a garrison.
 
 Explicit Fill Vacancies also works before initial deployment or while Hold Posts
 is OFF. Only newly assigned reserves receive post orders; released assigned troops
@@ -80,7 +83,7 @@ Put your existing **production Recruits 1.15.2 JAR** in `libs/`, named exactly
 ```
 
 `check` runs the assignment and persistence test mains. Runtime output is
-`build/libs/recruits-garrison-1.20.1-0.1.1.jar`.
+`build/libs/recruits-garrison-1.20.1-0.2.0.jar`.
 Do not install a `-dev.jar` in Minecraft.
 
 See `ACCEPTANCE.md` for the required in-game checklist and `INTEGRATION.md` for

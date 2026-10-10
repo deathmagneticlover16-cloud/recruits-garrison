@@ -18,7 +18,7 @@ public final class GarrisonStore extends SavedData {
         return store;
     }
     @Override public CompoundTag save(CompoundTag tag) {
-        tag.putInt("Schema", 1);
+        tag.putInt("Schema", 2);
         ListTag list = new ListTag(); groups.values().forEach(g -> list.add(g.save())); tag.put("Groups", list);
         return tag;
     }

@@ -7,8 +7,11 @@ import net.minecraft.world.phys.Vec3;
 import java.util.*;
 
 public final class GarrisonData {
+    public static final int DEFAULT_COLOR = GarrisonPalette.DEFAULT_COLOR;
+    public static final int COLOR_COUNT = GarrisonPalette.RGB.length;
     public final UUID group;
     public final UUID owner;
+    public int color = DEFAULT_COLOR;
     public boolean autoFill;
     public boolean holdPosts = true;
     public boolean deployed;
@@ -21,9 +24,15 @@ public final class GarrisonData {
             if (assignments.putIfAbsent(p.recruit, p) != null) p.recruit = null;
         }
     }
+    public void clearPosts() {
+        posts.clear();
+        assignments.clear();
+        deployed = false;
+    }
     public CompoundTag save() {
         CompoundTag tag = new CompoundTag();
         tag.putUUID("Group", group); tag.putUUID("Owner", owner);
+        tag.putInt("Color", color);
         tag.putBoolean("AutoFill", autoFill); tag.putBoolean("HoldPosts", holdPosts);
         tag.putBoolean("Deployed", deployed);
         ListTag list = new ListTag(); posts.forEach(p -> list.add(p.save())); tag.put("Posts", list);
@@ -31,6 +40,8 @@ public final class GarrisonData {
     }
     public static GarrisonData load(CompoundTag tag) {
         GarrisonData data = new GarrisonData(tag.getUUID("Group"), tag.getUUID("Owner"));
+        int color = tag.getInt("Color");
+        data.color = color >= 0 && color < COLOR_COUNT ? color : DEFAULT_COLOR;
         data.autoFill = tag.getBoolean("AutoFill"); data.holdPosts = tag.getBoolean("HoldPosts");
         data.deployed = tag.getBoolean("Deployed");
         for (Tag entry : tag.getList("Posts", Tag.TAG_COMPOUND)) data.posts.add(Post.load((CompoundTag) entry));

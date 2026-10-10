@@ -46,7 +46,11 @@ public final class GarrisonClient {
         send(GarrisonNetwork.Action.SYNC, stale, false);
     }
     public static void send(GarrisonNetwork.Action action, List<UUID> groups, boolean enabled) {
-        if (!groups.isEmpty()) GarrisonNetwork.CHANNEL.sendToServer(new GarrisonNetwork.Request(action, groups, BlockPos.ZERO, type, enabled));
+        if (!groups.isEmpty()) GarrisonNetwork.CHANNEL.sendToServer(new GarrisonNetwork.Request(action, groups, BlockPos.ZERO, type, enabled, GarrisonData.DEFAULT_COLOR));
+    }
+    public static void setColor(UUID group, int color) {
+        if (GarrisonPalette.valid(color)) GarrisonNetwork.CHANNEL.sendToServer(new GarrisonNetwork.Request(
+                GarrisonNetwork.Action.SET_COLOR, List.of(group), BlockPos.ZERO, type, false, color));
     }
     public static void begin(UUID group, boolean remove) {
         editing = group; removing = remove; show = true;
@@ -62,7 +66,7 @@ public final class GarrisonClient {
         HitResult hit = mc.player.pick(64, 1, false);
         if (!(hit instanceof BlockHitResult block) || hit.getType() != HitResult.Type.BLOCK) return;
         GarrisonNetwork.CHANNEL.sendToServer(new GarrisonNetwork.Request(removing ? GarrisonNetwork.Action.REMOVE : GarrisonNetwork.Action.ADD,
-                List.of(editing), block.getBlockPos(), type, false));
+                List.of(editing), block.getBlockPos(), type, false, GarrisonData.DEFAULT_COLOR));
         editing = null;
     }
     @SubscribeEvent public void key(InputEvent.Key event) {

@@ -153,7 +153,8 @@ public final class GarrisonController {
         GarrisonStore store = GarrisonStore.get(server);
         LinkedHashSet<UUID> requested = new LinkedHashSet<>(req.groups());
         if (requested.isEmpty() || requested.size() > 32) return;
-        boolean edit = req.action() == GarrisonNetwork.Action.ADD || req.action() == GarrisonNetwork.Action.REMOVE;
+        boolean edit = req.action() == GarrisonNetwork.Action.ADD || req.action() == GarrisonNetwork.Action.REMOVE
+                || req.action() == GarrisonNetwork.Action.REMOVE_ALL || req.action() == GarrisonNetwork.Action.SET_COLOR;
         if (edit && requested.size() != 1) return;
         for (UUID id : requested) {
             RecruitsGroup nativeGroup = group(id);
@@ -193,6 +194,10 @@ public final class GarrisonController {
                             g.posts.remove(nearest); g.reindex();
                         }
                     }
+                    case REMOVE_ALL -> {
+                        releaseAll(server, g);
+                        g.clearPosts();
+                    }
                     case MAN -> {
                         g.deployed = true; g.holdPosts = true;
                         for (Post p : g.posts) if (p.recruit != null) {
@@ -205,6 +210,9 @@ public final class GarrisonController {
                         fill(server, g);
                     }
                     case AUTO -> g.autoFill = req.enabled();
+                    case SET_COLOR -> {
+                        if (GarrisonPalette.valid(req.color())) g.color = req.color();
+                    }
                     case HOLD -> {
                         g.holdPosts = req.enabled();
                         if (!g.holdPosts) releaseAll(server, g);

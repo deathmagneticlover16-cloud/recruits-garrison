@@ -11,23 +11,23 @@ import java.util.*;
 import java.util.function.*;
 
 public final class GarrisonNetwork {
-    private static final String VERSION = "2";
+    private static final String VERSION = "3";
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
             new ResourceLocation(GarrisonMod.ID, "main"), () -> VERSION, VERSION::equals, VERSION::equals);
     /** Installed by client setup; no client classes are loaded by dedicated servers. */
     public static Consumer<Sync> clientReceiver = packet -> {};
-    public enum Action { SYNC, CONVERT, ADD, REMOVE, MAN, FILL, AUTO, HOLD, REMOVE_GROUP }
-    public record Request(Action action, List<UUID> groups, BlockPos position, PostType type, boolean enabled) {
+    public enum Action { SYNC, CONVERT, ADD, REMOVE, REMOVE_ALL, MAN, FILL, AUTO, HOLD, SET_COLOR, REMOVE_GROUP }
+    public record Request(Action action, List<UUID> groups, BlockPos position, PostType type, boolean enabled, int color) {
         static Request decode(FriendlyByteBuf buf) {
             Action action = buf.readEnum(Action.class);
             int size = buf.readVarInt();
             if (size < 1 || size > 32) throw new IllegalArgumentException("Invalid group count");
             List<UUID> groups = new ArrayList<>(); for (int i = 0; i < size; i++) groups.add(buf.readUUID());
-            return new Request(action, groups, buf.readBlockPos(), buf.readEnum(PostType.class), buf.readBoolean());
+            return new Request(action, groups, buf.readBlockPos(), buf.readEnum(PostType.class), buf.readBoolean(), buf.readVarInt());
         }
         void encode(FriendlyByteBuf buf) {
             buf.writeEnum(action); buf.writeVarInt(groups.size()); groups.forEach(buf::writeUUID);
-            buf.writeBlockPos(position); buf.writeEnum(type); buf.writeBoolean(enabled);
+            buf.writeBlockPos(position); buf.writeEnum(type); buf.writeBoolean(enabled); buf.writeVarInt(color);
         }
         void handle(Supplier<NetworkEvent.Context> supplier) {
             NetworkEvent.Context ctx = supplier.get();

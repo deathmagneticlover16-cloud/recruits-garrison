@@ -1,7 +1,8 @@
 # In-game acceptance checklist — NOT RUN
 
-Automated checks completed: 11 assignment checks, 9 persistence/NBT checks,
-8 arrival checks and 21 development Mixin target matches. These do not replace the tests below.
+Checks completed here: 11 assignment checks, 8 arrival checks and 7 palette checks. The 12-case
+persistence suite, full source build and development Mixin target scan still require
+the external Recruits/Forge dependencies. These checks do not replace the tests below.
 
 Use Forge 1.20.1, Recruits 1.15.2 and this addon on both client and server.
 
@@ -17,6 +18,9 @@ Use Forge 1.20.1, Recruits 1.15.2 and this addon on both client and server.
 | H | After G, Battle Stations | Saved assignments return to their posts | Not run |
 | I | Save, restart, logout/login and unload/reload | Identity, posts, dimensions, roles, facing, settings and assignments survive | Not run |
 | J | Two garrisons and one normal group, including mixed selection | Group data independent; normal group unaffected by garrison orders | Not run |
+| K | Convert a group whose native icon is not a shield | Native icon remains; `[shield]` appears beside its name in both group views | Not run |
+| L | Set every group color from the palette, save and reconnect | Shield tint matches the chosen Recruits faction color and persists | Not run |
+| M | Use Remove all positions on one of two garrisons | Selected plan is empty and defenders released; designation, color and other garrison remain | Not run |
 
 Additional checks: unauthorized packets cannot edit another owner's group; blocked
 placement rejected; Escape cancels; markers show only selected groups/current dimension;
@@ -26,4 +30,6 @@ unreachable posts; group rename/split/merge; empty-group UI; coexistence with Wo
 and the actual RTS camera addon.
 
 
-0.1.1 retest: Battle Stations without any follow-up order; exact post arrival on positive and negative coordinates; castle icon in both group views; Remove group from garrison releases troops, restores the original icon and preserves the native group.
+0.2.0 retest: Battle Stations without a follow-up order; exact post arrival on positive
+and negative coordinates; native group icons remain unchanged; tinted shield markers
+appear in both group views; Remove Garrison releases troops and preserves the native group.
