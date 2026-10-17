@@ -18,8 +18,8 @@ Use Forge 1.20.1, Recruits 1.15.2 and this addon on both client and server.
 | H | After G, turn Hold Posts ON | Saved assignments return to their posts | Not run |
 | I | Save, restart, logout/login and unload/reload | Identity, posts, dimensions, roles, facing, settings and assignments survive | Not run |
 | J | Two garrisons and one normal group, including mixed selection | Group data independent; normal group unaffected by garrison orders | Not run |
-| K | Convert a group with any native icon | Native icon remains; `[X]` appears beside its name in both group views | Not run |
-| L | Set every group color from the palette, save and reconnect | X color matches the chosen Recruits faction color and persists | Not run |
+| K | Convert a group with any native icon | Its icon becomes the Recruits shield in both group views; removing the designation restores the original | Not run |
+| L | Set every group color from the palette, save and reconnect | Shield color matches the chosen Recruits faction color and persists | Not run |
 | M | Use Remove all positions on one of two garrisons | Selected plan is empty and defenders released; designation, color and other garrison remain | Not run |
 
 Additional checks: unauthorized packets cannot edit another owner's group; blocked
@@ -31,5 +31,5 @@ and the actual RTS camera addon.
 
 
 0.2.0 retest: Fill Positions without a follow-up order; exact post arrival on positive
-and negative coordinates; native group icons remain unchanged; tinted X markers
+and negative coordinates; garrison group icons become tinted shields in both views
 appear in both group views; Remove Garrison releases troops and preserves the native group.

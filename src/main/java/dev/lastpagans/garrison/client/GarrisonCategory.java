@@ -42,7 +42,7 @@ public final class GarrisonCategory implements ICommandCategory {
         wideButton(screen, x, top + 84, "Show: " + (GarrisonClient.show ? "ON" : "OFF"), "Show selected garrisons' positions, facing, types and status within 96 blocks.", !garrisons.isEmpty(), () -> {
             GarrisonClient.show = !GarrisonClient.show; screen.setTightFormation(CommandScreen.tightFormation);
         });
-        button(screen, 80, screen.height - 40, "Set Group Color", "Choose the color of the X beside this garrison's group name.", single, () -> {
+        button(screen, 80, screen.height - 40, "Set Group Color", "Choose the color of this garrison group's shield icon.", single, () -> {
             UUID id = garrisons.get(0);
             RecruitsGroup group = groups.stream().filter(candidate -> candidate.getUUID().equals(id)).findFirst().orElse(null);
             if (group != null) net.minecraft.client.Minecraft.getInstance().setScreen(

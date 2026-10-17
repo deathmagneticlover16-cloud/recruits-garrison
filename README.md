@@ -25,8 +25,9 @@ Gradle project and that dependency before release.
 
 1. Create a normal group using Recruits. Select only that group in the command screen.
 2. Open the castle-icon **Garrison** category and click **Make Garrison**.
-   The group's original icon stays in place and a colored `[X]` appears beside its name.
-   Use **Set Group Color** in the bottom-left corner to choose the X color.
+   Its displayed group icon automatically becomes Recruits' shield icon. Use
+   **Set Group Color** in the bottom-left corner to choose the shield color. Removing
+   the garrison designation restores the group's original icon choice.
 3. Cycle **Type**, click **Add Position**, face the desired direction, and right-click
    a solid floor block in the world. Escape cancels placement. Repeat for each post.
 4. Click **Fill Positions** to assign available compatible recruits to empty posts.
